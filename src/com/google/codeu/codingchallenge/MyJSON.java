@@ -18,37 +18,55 @@ import java.util.Collection;
 
 final class MyJSON implements JSON {
 
+  Map mapOfJSON = new Map<String, JSON>;
+
   @Override
   public JSON getObject(String name) {
-    // TODO: implement this
+    for(Map.entry(mapOfJSON) pair : map.EntrySet()) {
+      if(pair.containsKey(name)) {
+        return pair.get(name);
+      }
+    }
     return null;
   }
 
   @Override
   public JSON setObject(String name, JSON value) {
-    // TODO: implement this
+    for(Map.entry(mapOfJSON) pair : map.EntrySet()) {
+      if(pair.containsKey(name)) {
+        mapOfJSON.replace(name, value);
+      }
+    }
     return this;
   }
 
   @Override
   public String getString(String name) {
-    // TODO: implement this
+    for(Map.entry(mapOfJSON) pair : map.EntrySet()) {
+      if(pair.containsKey(name)) {
+        return pair.get(name);
+      }
+    }
     return null;
   }
 
   @Override
   public JSON setString(String name, String value) {
-    // TODO: implement this
+    for(Map.entry(mapOfJSON) pair : map.EntrySet()) {
+      if(pair.containsKey(name)) {
+        mapOfJSON.replace(name, value);
+      }
+    }
     return this;
   }
 
   @Override
   public void getObjects(Collection<String> names) {
-    // TODO: implement this
+    names.add(this.getObject());
   }
 
   @Override
   public void getStrings(Collection<String> names) {
-    // TODO: implement this
+    names.add(this.getString());
   }
 }

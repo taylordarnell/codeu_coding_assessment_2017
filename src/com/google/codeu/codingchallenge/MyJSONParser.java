@@ -20,7 +20,19 @@ final class MyJSONParser implements JSONParser {
 
   @Override
   public JSON parse(String in) throws IOException {
-    // TODO: implement this
-    return new MyJSON();
+    if(!in.equals("")){
+      int indexComma = in.indexOf(',');
+      String tempKey = in.subString(0, indexComma);
+      String tempValue = in.subString(indexComma + 1);
+      int i = in.indexOf('\"');
+      int j = in.indexOf('\"', i);
+      String key = tempKey.subString(i + 1, j);
+      int k = in.indexOf('\"', j);
+      int l = in.indexOf('\"', k);
+      String value = in.subString(j + 1, k);
+      return new MyJSON(key, value);
+    } else {
+      return new MyJSON();
+    }
   }
 }
